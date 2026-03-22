@@ -150,8 +150,8 @@ export default function ChurchModel({ showInterior }: { showInterior: boolean })
                     <Wall position={[0, 6, 0]} args={[2.5, 12, 2.5]} transparent={t} />
                     {/* Spire */}
                     {!t && (
-                        <mesh position={[0, 15, 0]} castShadow>
-                            <coneGeometry args={[1.8, 6, 4]} rotation={[0, Math.PI / 4, 0]} />
+                        <mesh position={[0, 15, 0]} rotation={[0, Math.PI / 4, 0]} castShadow>
+                            <coneGeometry args={[1.8, 6, 4]} />
                             <meshStandardMaterial color={Colors.roofSlate} roughness={0.8} />
                         </mesh>
                     )}
