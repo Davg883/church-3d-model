@@ -5,20 +5,20 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, Sky } from "@react-three/drei";
 import * as THREE from "three";
 
-// Colors extracted from images
+// Colors extracted from historical context (Timber temporary church)
 const Colors = {
-    exteriorBrick: "#8b382d", // deep red brick
-    interiorBrick: "#8e8979", // grey-yellow interior brick
-    roofSlate: "#4a4f56",
-    woodDark: "#3a2519", // pews and screen
-    stoneTrim: "#d4c8b8",
-    floorLight: "#e2ddce",
-    floorDark: "#525450",
+    exteriorWood: "#3a2820", // dark stained timber cladding
+    interiorWood: "#8e7052", // warm exposed interior timber framing
+    roofSlate: "#2d3436", // dark slate or shingled roof
+    woodDark: "#261711", // pews, screens, and main trusses
+    stoneTrim: "#e2ddce", // salvaged stone features (altar, traceries)
+    floorLight: "#c8bca7", // stone paving
+    floorDark: "#3a3a3a",
 };
 
 // Reusable Wall Component with different in/out colors via materials array if needed, 
 // here kept simple with color switching or DoubleSide
-const Wall = ({ position, args, rotation = [0, 0, 0], transparent = false, color = Colors.exteriorBrick }: any) => {
+const Wall = ({ position, args, rotation = [0, 0, 0], transparent = false, color = Colors.exteriorWood }: any) => {
     return (
         <mesh position={position} rotation={rotation as any} castShadow receiveShadow>
             <boxGeometry args={args} />
@@ -112,7 +112,7 @@ export default function ChurchModel({ showInterior }: { showInterior: boolean })
                             new THREE.Shape().moveTo(0, 0).lineTo(6.2, 4.5).lineTo(12.4, 0).lineTo(0, 0),
                             { depth: 0.4, bevelEnabled: false }
                         ]} />
-                        <meshStandardMaterial color={Colors.exteriorBrick} roughness={0.9} />
+                        <meshStandardMaterial color={Colors.exteriorWood} roughness={0.9} />
                     </mesh>
                 )}
                 {!t && (
@@ -121,7 +121,7 @@ export default function ChurchModel({ showInterior }: { showInterior: boolean })
                             new THREE.Shape().moveTo(0, 0).lineTo(6.2, 4.5).lineTo(12.4, 0).lineTo(0, 0),
                             { depth: 0.4, bevelEnabled: false }
                         ]} />
-                        <meshStandardMaterial color={Colors.exteriorBrick} roughness={0.9} />
+                        <meshStandardMaterial color={Colors.exteriorWood} roughness={0.9} />
                     </mesh>
                 )}
 
@@ -253,11 +253,11 @@ export default function ChurchModel({ showInterior }: { showInterior: boolean })
                         </mesh>
                     </group>
 
-                    {/* Inner wall details - brick texture implied by color */}
+                    {/* Inner wall details - timber texture implied by color */}
                     {t && (
                         <group position={[0, 4, 0]}>
-                            <Wall position={[-5.7, 0, 0]} args={[0.1, 7.8, 23.8]} color={Colors.interiorBrick} />
-                            <Wall position={[5.7, 0, 0]} args={[0.1, 7.8, 23.8]} color={Colors.interiorBrick} />
+                            <Wall position={[-5.7, 0, 0]} args={[0.1, 7.8, 23.8]} color={Colors.interiorWood} />
+                            <Wall position={[5.7, 0, 0]} args={[0.1, 7.8, 23.8]} color={Colors.interiorWood} />
                         </group>
                     )}
 
